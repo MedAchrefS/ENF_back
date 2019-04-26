@@ -29,16 +29,23 @@ public class CandidatController {
     public List<Candidat> getAllCandidats() {
         return candidatMetier.getAllCandidats();
     }
+
     // Create a new Note
-
-
-
-    
     @PostMapping("/candidat")
     @CrossOrigin(origins = "http://localhost:4200")
     public Candidat createCandidat(@RequestBody Candidat candidat) {
         return candidatMetier.createCandidat(candidat);
       
+    }
+
+    @GetMapping("/candidat/{cin}")
+    @CrossOrigin(origins = "http://localhost:4200")
+     public Candidat findBycin(@PathVariable Integer cin) {
+         if(candidatMetier.findBycin(cin)!=null){
+            return candidatMetier.findBycin(cin);
+         }else
+         return null;
+            
     }
 
     // Get a Single Note

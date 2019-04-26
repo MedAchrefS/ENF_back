@@ -16,5 +16,6 @@ public interface ICandidatMetier {
    // public Formateur updateFormateur(Integer formateurId);
      //@Valid @RequestBody Formateur formateurDetails);
     //public ResponseEntity<?> deleteFormateur(@PathVariable(value = "id") Integer formateurId) ;
-    
+	  public Candidat userType(Integer cin);
+    public Candidat findBycin(Integer cin);
 }

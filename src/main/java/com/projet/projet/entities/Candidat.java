@@ -23,7 +23,8 @@ public class Candidat implements Serializable {
         super();
     }
 
-    public Candidat(Integer idCandidat, Integer cin, String nom, String prenom, String adresse, Integer telephone_personnel, String nomAdministration, String lieuTravail, String adresseTravail, String niveauAcademique, String gradeActuel, String descriptionTaches, Date dateLimiteinscription, String categorie) {
+
+    public Candidat(Integer idCandidat, Integer cin, String nom, String prenom, String adresse, Integer telephone_personnel, String nomAdministration, String lieuTravail, String adresseTravail, String niveauAcademique, String gradeActuel, String descriptionTaches, Date dateLimiteinscription, String categorie, String type, Set<Dossier> dossiers) {
         this.idCandidat = idCandidat;
         this.cin = cin;
         this.nom = nom;
@@ -38,8 +39,10 @@ public class Candidat implements Serializable {
         this.descriptionTaches = descriptionTaches;
         this.dateLimiteinscription = dateLimiteinscription;
         this.categorie = categorie;
+        this.type = type;
+        this.dossiers = dossiers;
     }
-
+ 
 
 
     @Id
@@ -50,10 +53,9 @@ public class Candidat implements Serializable {
     
     @NotBlank
     private String nom;
-    @NotBlank
+   
     private String prenom;
 
-    @NotBlank
     private String adresse;
 
     @NotNull
@@ -81,6 +83,8 @@ public class Candidat implements Serializable {
 
     @NotBlank
     private String categorie;
+    
+    private String type;
 
     @OneToMany(mappedBy="candidat",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     private Set<Dossier> dossiers;
@@ -207,6 +211,14 @@ public class Candidat implements Serializable {
 
     public void setDossiers(Set<Dossier> dossiers) {
         this.dossiers = dossiers;
+    }
+
+    public String getType() {
+        return this.type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
 
